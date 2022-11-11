@@ -1,4 +1,4 @@
-import { Component, useState } from 'react'
+import { Component, useMemo, useState } from 'react'
 import { idiomaCtx } from "../../contexts/idioma.ctx"
 import { traducir } from '../../helpers/traductor'
 import BuscadorCocktails from './BuscadorCocktails'
@@ -8,9 +8,21 @@ import VideoPlayer from './VideoPlayer'
 const Cmp02Hooks = () => {
   const [cuenta, setCuenta] = useState(8)
   const [idioma, setIdioma] = useState('es')
+  const [nombre, setNombre] = useState('Charly')
+  const [apellido, setApellido] = useState('Falco')
   // const [credenciales, setCredenciales] = useState({username: '', password: ''})
   // const [username, setUsername] = useState('')
   // const [password, setPassword] = useState('')
+
+  // const getNombreCompleto = () => {
+  //   console.log('Calcula el nombre completo...')
+  //   return `${apellido}, ${nombre}`
+  // }
+  // const nombreCompleto = getNombreCompleto()
+  const nombreCompleto = useMemo(() => {
+    console.log('Calcula el nombre completo...')
+    return `${apellido}, ${nombre}`
+  }, [nombre, apellido])
 
   const objIdiomaCtx = {
     idioma,
@@ -20,6 +32,19 @@ const Cmp02Hooks = () => {
   return (
     <div>
       <h2>React Hooks</h2>
+
+      <h3>useMemo</h3>
+      {/* <p>{nombre} {apellido}</p> */}
+      <p>{nombreCompleto}</p>
+      <input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} />
+      <input type="text" value={apellido} onChange={(e) => setApellido(e.target.value)} />
+
+
+
+
+
+
+      <h3>useState</h3>
       <div>
         <button type="button" onClick={() => setCuenta(cuenta - 1)}>-</button>
         <span>{cuenta}</span>
@@ -27,9 +52,14 @@ const Cmp02Hooks = () => {
       </div>
       {/* <hr />
       <Contador /> */}
+
+      <h3>useRef</h3>
       <VideoPlayer />
+
+      <h3>useEffect y useCallback</h3>
       <BuscadorCocktails />
 
+      <h3>useContext</h3>
       <select value={idioma} onChange={(e) => setIdioma(e.target.value)}>
         <option value="es">Spanish</option>
         <option value="en">English</option>

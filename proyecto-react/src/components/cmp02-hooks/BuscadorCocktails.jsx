@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 const BuscadorCocktails = () => {
   const [nombre, setNombre] = useState('margarita')
@@ -12,21 +12,32 @@ const BuscadorCocktails = () => {
       .then(resp => resp.json())
       .then(data => {
         console.log(data)
-        setCocktails(data.drinks)
+        setCocktails(data.drinks || [])
       })
   }, [nombre])
 
-  useEffect(() => {
-    // console.log('PASA POR EL USEEFFECT ID')
-    if (cocktailId) {
-      // console.log('PASA POR EL USEEFFECT ID - IF')
-      fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${cocktailId}`)
+  const getCocktailById = useCallback(() => {
+    fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${cocktailId}`)
         .then(resp => resp.json())
         .then(data => {
           console.log(data)
           const [drink] = data.drinks
           setCocktailSeleccionado(drink)
         })
+  }, [cocktailId])
+
+  useEffect(() => {
+    // console.log('PASA POR EL USEEFFECT ID')
+    if (cocktailId) {
+      // console.log('PASA POR EL USEEFFECT ID - IF')
+      // fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${cocktailId}`)
+      //   .then(resp => resp.json())
+      //   .then(data => {
+      //     console.log(data)
+      //     const [drink] = data.drinks
+      //     setCocktailSeleccionado(drink)
+      //   })
+      getCocktailById()
     }
   }, [cocktailId])
 
