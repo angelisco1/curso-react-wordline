@@ -1,0 +1,4 @@
+// ACTION TYPES
+
+export const INCREMENTAR = 'INCREMENTAR'
+export const SET_CUENTA = 'SET_CUENTA'

@@ -1,0 +1,25 @@
+{
+  "productos": [
+    {
+      "id": 1,
+      "nombre": "Perrito piloto",
+      "precio": 5,
+      "codigo": 12,
+      "stock": 4
+    },
+    {
+      "id": 2,
+      "nombre": "Tamagochi",
+      "precio": 3,
+      "codigo": 18,
+      "stock": 8
+    },
+    {
+      "id": 3,
+      "nombre": "Peluche marsupilami",
+      "precio": 13,
+      "codigo": 26,
+      "stock": 3
+    }
+  ]
+}

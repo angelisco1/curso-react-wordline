@@ -1,4 +1,4 @@
-import Cmp03CustomHooks from "./cmp03-custom-hooks/Cmp03CustomHooks"
+import Cmp02Hooks from "./cmp02-hooks/Cmp02Hooks"
 
 const App = () => {
   return (
@@ -6,8 +6,8 @@ const App = () => {
       <h1>Curso de React</h1>
       {/* <CmpDeClase prop1="propiedad1" />
       <CmpFuncional prop2="propiedad2" /> */}
-      {/* <Cmp02Hooks /> */}
-      <Cmp03CustomHooks />
+      <Cmp02Hooks />
+      {/* <Cmp03CustomHooks /> */}
     </div>
   )
 }

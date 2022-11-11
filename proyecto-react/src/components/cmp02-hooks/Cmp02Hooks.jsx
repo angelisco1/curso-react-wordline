@@ -3,6 +3,7 @@ import { idiomaCtx } from "../../contexts/idioma.ctx"
 import { traducir } from '../../helpers/traductor'
 import BuscadorCocktails from './BuscadorCocktails'
 import Cmp1 from './Cmp1'
+import MoverElCuadrado from './MoverElCuadrado'
 import VideoPlayer from './VideoPlayer'
 
 const Cmp02Hooks = () => {
@@ -40,8 +41,8 @@ const Cmp02Hooks = () => {
       <input type="text" value={apellido} onChange={(e) => setApellido(e.target.value)} />
 
 
-
-
+      <h3>useReducer</h3>
+      <MoverElCuadrado />
 
 
       <h3>useState</h3>
